@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>ImageModel.kt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #0000ff;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+ImageModel.kt</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span>com.example.listviewb
+
+<span class="s0">class </span>ImageModel {
+    <span class="s0">var </span>name: String? = <span class="s0">null</span>
+    var des: String? = <span class="s0">null</span>
+    var image_drawable: Int = <span class="s2">0</span>
+
+    <span class="s0">fun </span>getNames(): String {
+        <span class="s0">return </span>name.toString()
+    }
+
+    <span class="s0">fun </span>setNames(name: String) {
+        <span class="s0">this</span>.name = name
+    }
+    <span class="s0">fun </span>getDess(): String {
+        <span class="s0">return </span>des.toString()
+    }
+
+    <span class="s0">fun </span>setDess(des: String) {
+        <span class="s0">this</span>.des = des
+    }
+
+    <span class="s0">fun </span>getImage_drawables(): Int {
+        <span class="s0">return </span>image_drawable
+    }
+
+    <span class="s0">fun </span>setImage_drawables(image_drawable: Int) {
+        <span class="s0">this</span>.image_drawable = image_drawable
+    }
+
+}
+</pre>
+</body>
+</html>

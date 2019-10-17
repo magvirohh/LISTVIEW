@@ -1,0 +1,89 @@
+<html>
+<head>
+<title>CustomAdapter.kt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #0000ff;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+CustomAdapter.kt</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span>com.example.listviewb
+
+import android.content.Context
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.BaseAdapter
+import android.widget.ImageView
+import android.widget.TextView
+import java.util.ArrayList
+
+
+<span class="s0">class </span>CustomAdapter(private <span class="s0">val </span>context: Context, private <span class="s0">val </span>imageModelArrayList: ArrayList&lt;ImageModel&gt;) : BaseAdapter() {
+
+    override <span class="s0">fun </span>getViewTypeCount(): Int {
+        <span class="s0">return </span>count
+    }
+
+    override <span class="s0">fun </span>getItemViewType(position: Int): Int {
+
+        <span class="s0">return </span>position
+    }
+
+    override <span class="s0">fun </span>getCount(): Int {
+        <span class="s0">return </span>imageModelArrayList.size
+    }
+
+    override <span class="s0">fun </span>getItem(position: Int): Any {
+        <span class="s0">return </span>imageModelArrayList[position]
+    }
+
+    override <span class="s0">fun </span>getItemId(position: Int): Long {
+        <span class="s0">return </span><span class="s2">0</span>
+    }
+
+    override <span class="s0">fun </span>getView(position: Int, convertView: View?, parent: ViewGroup): View {
+        <span class="s0">var </span>convertView = convertView
+        <span class="s0">val </span>holder: ViewHolder
+
+        <span class="s0">if </span>(convertView == <span class="s0">null</span>) {
+            holder = ViewHolder()
+            <span class="s0">val </span>inflater = context
+                .getSystemService(Context.LAYOUT_INFLATER_SERVICE) <span class="s0">as </span>LayoutInflater
+            convertView = inflater.inflate(R.layout.lv_item, <span class="s0">null</span>, <span class="s0">true</span>)
+            holder.tvname = convertView!!.findViewById(R.id.name) <span class="s0">as </span>TextView
+            holder.tvdes = convertView!!.findViewById(R.id.des) <span class="s0">as </span>TextView
+            holder.iv = convertView.findViewById(R.id.imgView) <span class="s0">as </span>ImageView
+
+
+            convertView.tag = holder
+        } <span class="s0">else </span>{
+
+            holder = convertView.tag <span class="s0">as </span>ViewHolder
+        }
+
+        holder.tvname!!.setText(imageModelArrayList[position].getNames())
+        holder.tvdes!!.setText(imageModelArrayList[position].getDess())
+        holder.iv!!.setImageResource(imageModelArrayList[position].getImage_drawables())
+
+        <span class="s0">return </span>convertView
+    }
+
+    private inner <span class="s0">class </span>ViewHolder {
+
+        <span class="s0">var </span>tvname: TextView? = <span class="s0">null</span>
+        var tvdes: TextView? = <span class="s0">null</span>
+        internal <span class="s0">var </span>iv: ImageView? = <span class="s0">null</span>
+
+    }
+
+}</pre>
+</body>
+</html>

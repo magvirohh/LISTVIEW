@@ -1,0 +1,78 @@
+<html>
+<head>
+<title>MainActivity.kt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #0000ff;}
+.s3 { color: #008000; font-weight: bold;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+MainActivity.kt</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span>com.example.listviewb
+
+import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.widget.ImageView
+import android.widget.ListView
+import androidx.appcompat.app.AppCompatActivity
+import java.util.ArrayList
+
+<span class="s0">class </span>MainActivity : AppCompatActivity() {
+
+    private <span class="s0">val </span>a = <span class="s2">5</span>
+    private <span class="s0">val </span>b = <span class="s2">5</span>
+    private <span class="s0">val </span>c = <span class="s2">5</span>
+    private <span class="s0">var </span>lv: ListView? = <span class="s0">null</span>
+    private <span class="s0">var </span>customeAdapter: CustomAdapter? = <span class="s0">null</span>
+    private <span class="s0">var </span>imageModelArrayList: ArrayList&lt;ImageModel&gt;? = <span class="s0">null</span>
+    private <span class="s0">val </span>myImageList = intArrayOf(R.drawable.ruby, R.drawable.rails, R.drawable.python, R.drawable.js, R.drawable.php)
+    private <span class="s0">val </span>myImageNameList = arrayOf(<span class="s3">&quot;Ruby&quot;</span>, <span class="s3">&quot;Rails&quot;</span>,<span class="s3">&quot;Python&quot;</span>, <span class="s3">&quot;JavaScript&quot;</span>, <span class="s3">&quot;PHP&quot;</span>)
+    private <span class="s0">val </span>myImageDesList = arrayOf(<span class="s3">&quot;Ruby is an open-source and fully object-orienten progeming language.&quot;</span>,
+        <span class="s3">&quot;Ruby on Rails is server-side web application development framework written in Ruby language.&quot;</span>,
+        <span class="s3">&quot;Python is interpreted scripting and ibject-oriented programing language.&quot;</span>,
+        <span class="s3">&quot;JavaScript is an object-based scripting language.&quot;</span>,
+        <span class="s3">&quot;PHP is an interpreted language, i.e there is no need for complication.&quot;</span>)
+
+    override <span class="s0">fun </span>onCreate(savedInstanceState: Bundle?) {
+        <span class="s0">super</span>.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        lv = findViewById(R.id.listview) <span class="s0">as </span>ListView
+
+        imageModelArrayList = populateList()
+        Log.d(<span class="s3">&quot;hjhjh&quot;</span>, imageModelArrayList!!.size.toString() + <span class="s3">&quot;&quot;</span>)
+        customeAdapter = CustomAdapter(<span class="s0">this</span>, imageModelArrayList!!)
+        lv!!.adapter = customeAdapter
+
+
+
+    }
+
+    private <span class="s0">fun </span>populateList(): ArrayList&lt;ImageModel&gt; {
+
+        <span class="s0">val </span>list = ArrayList&lt;ImageModel&gt;()
+
+        <span class="s0">for </span>(i <span class="s0">in </span><span class="s2">0</span>..<span class="s2">4</span>) {
+            <span class="s0">val </span>imageModel = ImageModel()
+            imageModel.setNames(myImageNameList[i])
+            imageModel.setDess(myImageDesList[i])
+            imageModel.setImage_drawables(myImageList[i])
+            list.add(imageModel)
+        }
+
+        <span class="s0">return </span>list
+    }
+
+
+}
+</pre>
+</body>
+</html>
